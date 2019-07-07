@@ -2,3 +2,8 @@ language: node_js
 node_js:
   - 9
   - 8
+script:
+  - yarn test
+after_script:
+  - "npm run test:coverage"
+  - "yarn add codecov.io && cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js"
