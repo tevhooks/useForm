@@ -3,10 +3,17 @@
 > A react hook library meant to make it easy while dealing with hooks
 
 
+
+[![Build Status](https://travis-ci.org/tevhooks/useForm.svg?branch=master)](https://travis-ci.org/tevhooks/useForm)
+[![codecov](https://codecov.io/gh/tevhooks/useForm/branch/master/graph/badge.svg)](https://codecov.io/gh/tevhooks/useForm)
+
+[![forthebadge](https://forthebadge.com/images/badges/built-by-hipsters.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/ages-12.svg)](https://forthebadge.com)
+
 ## Install
 
 ```bash
-npm install --save @tevhooks/useform
+npm install --save @tevhooks/useform or yarn add @tevhooks/useform
 ```
 
 ## Usage
@@ -21,6 +28,8 @@ export default values => {
   if(values.passord !== values.retypedpassword) {
     errors.missmatch = "The two passwords do not match"
   }
+
+  return errors
 }
 
 ```
