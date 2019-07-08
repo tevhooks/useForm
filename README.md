@@ -25,7 +25,7 @@ npm install --save @tevhooks/useform or yarn add @tevhooks/useform
  * */
 export default values => {
   let errors = {}
-  if(values.passord !== values.retypedpassword) {
+  if(values.password !== values.retypedpassword) {
     errors.missmatch = "The two passwords do not match"
   }
 
@@ -79,7 +79,58 @@ const Setnewpassword = () => {
 }
 ```
 
-Check out the examples folder for a full example on how this library works
+
+#### Still using classes ?
+
+Not to worry, but this guy's advice is [legit](https://www.youtube.com/watch?v=dpw9EHDh2bM&feature=youtu.be&t=3726)
+
+I've exposed a RenderProp that will work with class based components
+
+```jsx
+
+import React from "react";
+import { RenderUseForm } from "@tevhooks/useform";
+
+import validatepasswords from "./validatepasswords.js" // same validation as used in the above example
+
+class Forgotpassword extends React.Component {
+  handleSubmit = values => {
+    // values is the object passeed down from the hook to the callback function
+    console.log(values);
+  };
+  render() {
+    return (
+      <RenderUseForm callback={this.handleSubmit} validate={validatepasswords}>
+        {({ values, handleChange, handleSubmit, errors }) => (
+          <form onSubmit={handleSubmit}>
+            <input
+              type="password"
+              name="password"
+              value={values.password || ""}
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              name="retypedpassword"
+              value={values.retypedpassword || ""}
+              onChange={handleChange}
+            />
+            {errors.missmatch && (
+              <div className="error">{errors.missmatch}</div>
+            )}
+            <button type="submit">Submit</button>
+          </form>
+        )}
+      </RenderUseForm>
+    );
+  }
+}
+
+```
+
+
+
+Check out the examples folder for a full example on how this library works (examples are for both hooks and renderprop api)
 
 
 ## License

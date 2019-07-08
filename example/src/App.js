@@ -1,6 +1,8 @@
 import React from "react";
 import useForm from "@tevhooks/useform";
 
+import RenderpropForm from "./Withclasses";
+
 import signupvalidation from "./validations/signup";
 
 function App(props) {
@@ -16,6 +18,7 @@ function App(props) {
 
   return (
     <div>
+      <h1>Using Hooks</h1>
       <form onSubmit={handleSubmit} data-testid="form">
         <input
           type="email"
@@ -100,6 +103,8 @@ function App(props) {
           Submit
         </button>
       </form>
+      <h1>Using render props</h1>
+      <RenderpropForm />
     </div>
   );
 }
